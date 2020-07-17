@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import List from "./components/List";
+import { connect } from "react-redux";
+import AddButton from "./components/AddButton";
+import "./css/App.css";
+import { Base, BoardLists, Board, BoardList } from "./components/styled/Base";
 
-function App() {
+function App(props) {
+  const { lists } = props;
+
+  const renderList = () => {
+    if (lists) {
+      return lists.map((list) => {
+        return <List listId={list.id} title={list.title} cards={list.cards} />;
+      });
+    }
+    return null;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Base>
+      <Board>
+        <BoardLists>
+          {renderList()}
+          <BoardList>
+            <AddButton list />
+          </BoardList>
+        </BoardLists>
+      </Board>
+    </Base>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return { lists: state.lists };
+};
+
+export default connect(mapStateToProps)(App);

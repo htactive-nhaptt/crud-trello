@@ -1,0 +1,9 @@
+.App {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.card {
+  width: 300px;
+}
