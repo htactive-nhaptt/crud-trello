@@ -69,7 +69,9 @@ const List = (props) => {
         </div>
       )}
       {cards.map((card) => {
-        return <Card id={card.id} listId={listId} text={card.text} />;
+        return (
+          <Card key={card.id} id={card.id} listId={listId} text={card.text} />
+        );
       })}
 
       <AddButton title={title} listId={listId} />

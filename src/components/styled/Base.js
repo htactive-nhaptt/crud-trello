@@ -52,5 +52,5 @@ export const Board = styled.div`
 `;
 
 export const Button = styled.button`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;

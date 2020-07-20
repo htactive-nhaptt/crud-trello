@@ -11,7 +11,14 @@ function App(props) {
   const renderList = () => {
     if (lists) {
       return lists.map((list) => {
-        return <List listId={list.id} title={list.title} cards={list.cards} />;
+        return (
+          <List
+            key={list.id}
+            listId={list.id}
+            title={list.title}
+            cards={list.cards}
+          />
+        );
       });
     }
     return null;
