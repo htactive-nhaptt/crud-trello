@@ -65,13 +65,10 @@ const listReducer = (state = initialState, action) => {
     }
     case CONSTANTS.DELETE_LIST: {
       const { listId } = action.payload;
-      const list = [];
-      console.log(listId);
-      for (let i = 0; i < state.length; i++) {
-        if (state[i].id !== listId) list.push(state[i]);
-        console.log("id: %d, listId: %d", state[i].id, listId);
-      }
-      return list;
+      return state.filter((list) => {
+        if (list.id !== listId) return list;
+        return list;
+      });
     }
     case CONSTANTS.DELETE_CARD: {
       const { listId, id } = action.payload;
